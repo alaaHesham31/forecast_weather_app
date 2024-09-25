@@ -127,16 +127,44 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 10,
                   ),
-                  InkWell(
-                    onTap: _showCitySelectionDialog,
-                    child: Text(
-                      _city,
-                      style: GoogleFonts.lato(
-                        fontSize: 36,
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.location_on,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
                       ),
-                    ),
+                      SizedBox(width: 15),
+                      IconButton(
+                        icon: Row(
+                          children: [
+                            Text(
+                              _city,
+                              style: GoogleFonts.lato(
+                                fontSize: 36,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 8,),
+                            Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.white,
+                              size: 18, // Adjust the size as needed
+                            ),
+                          ],
+                        ),
+                        onPressed:
+                            _showCitySelectionDialog, // Show dialog on press
+                        padding: EdgeInsets.zero, // Remove any padding
+                        constraints: BoxConstraints(), // Remove any constraints
+                      ),
+                      Spacer(),
+                      IconButton(
+                        icon: Icon(Icons.notifications_outlined,
+                            color: Colors.white),
+                        onPressed: (){},
+                      ),
+                    ],
                   ),
                   SizedBox(height: 30),
                   Center(
@@ -144,8 +172,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Image.network(
                           'http:${_currentWeather!['current']['condition']['icon']}',
-                          height: 100,
-                          width: 100,
+                          height: 120,
+                          width: 120,
                           fit: BoxFit.cover,
                         ),
                         Text(
